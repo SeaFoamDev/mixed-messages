@@ -24,3 +24,12 @@ const messages = [
     "Freedom is worth dieing for, but when everyone dies, no ones free",
     "STARING CONTEST! GO! O_O",
 ];
+const generateRandomness = () => {
+    const randomIndex = Math.floor(Math.random() * messages.length);
+    return randomIndex;
+}
+const getMessage = () => {
+    let i = generateRandomness();
+    return messages[i];
+}
+console.log(getMessage());
