@@ -76,12 +76,12 @@ const messages = {
     "Why did the cookie go to the doctor? Because it was feeling crumbly!"
     ]
 };
-const generateRandomness = () => {
-    const randomIndex = Math.floor(Math.random() * messages.funnyStatements.length);
-    return randomIndex;
-}
 const getMessage = () => {
-    let i = generateRandomness();
-    return messages.funnyStatements[i];
+    const keys = Object.keys(messages); // get all keys
+    const randomIndex = Math.floor(Math.random() * keys.length); // gets the random key index
+    let myKey = keys[randomIndex]; // gets key
+    const randomMessageIndex = Math.floor(Math.random() * messages[myKey].length); // gets random message index
+    let myMessage = messages[myKey][randomMessageIndex]; // gets message
+    return myMessage; // return a string
 }
 console.log(getMessage());
