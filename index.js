@@ -76,6 +76,12 @@ const messages = {
     "Why did the cookie go to the doctor? Because it was feeling crumbly!"
     ]
 };
+let messageLog = {
+    funnyStatements: [],
+    fortunes: [],
+    quotes: [],
+    jokes: []
+};
 const getRandomStatement = () => {
     let randomNum = Math.floor(Math.random() * messages[funnyStatements].length);
     let randomStatement = messages[funnyStatements][randomNum];
@@ -98,12 +104,20 @@ const getRandomJokes = () => {
 }
 const getChosenMessage = (type) => {
     if(type === "funnyStatements"){
-        return getRandomStatement();
+        messageLog[funnyStatements].push(getRandomStatement(type));
+        if(messageLog[funnyStatements].length >= messages[funnyStatements].length){
+            return getRandomStatement();
+        }else{
+            return "You have already recieved all the funny statements, here is a random one again: " + getRandomStatement();
+        }
     } else if(type === "fortunes"){
+        messageLog[fortunes].push(getRandomfotunes());
         return getRandomfotunes();
     }else if(type === "quotes"){
+        messageLog[quotes].push(getRandomQuotes());
         return getRandomQuotes();
     }else if(type === "jokes"){
+        messageLog[jokes].push(getRandomJokes());
         return getRandomJokes();
     } else{
         return "Invalid message type. Please choose from 'funnyStatements', 'fortunes', 'quotes', or 'jokes'.";
