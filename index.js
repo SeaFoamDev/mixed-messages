@@ -11,7 +11,7 @@ const messages = {
     "Careful, there might be something unplesant under your bed...",
     "EAT YOUR BROCCILI!",
     "Floss every night, your dentist is watching",
-    "Always be careful when wearing a tie, it is a perfect noose",
+    "Always be careful when wearing a tie, it's the perfect noose",
     "It's not a bug, it's a beautiful arachnid",
     "It's not polite to stare",
     "Foamed milk is perfect for slurping",
@@ -76,12 +76,42 @@ const messages = {
     "Why did the cookie go to the doctor? Because it was feeling crumbly!"
     ]
 };
-const getMessage = () => {
-    const keys = Object.keys(messages); // get all keys
-    const randomIndex = Math.floor(Math.random() * keys.length); // gets the random key index
-    let myKey = keys[randomIndex]; // gets key
-    const randomMessageIndex = Math.floor(Math.random() * messages[myKey].length); // gets random message index
-    let myMessage = messages[myKey][randomMessageIndex]; // gets message
-    return myMessage; // return a string
+const getRandomStatement = () => {
+    let randomNum = Math.floor(Math.random() * messages[funnyStatements].length);
+    let randomStatement = messages[funnyStatements][randomNum];
+    return randomStatement;
 }
-console.log(getMessage());
+const getRandomfotunes = () => {
+    let randomNum = Math.floor(Math.random() * messages[fortunes].length);
+    let randomStatement = messages[fortunes][randomNum];
+    return randomStatement;
+}
+const getRandomQuotes = () => {
+    let randomNum = Math.floor(Math.random() * messages[quotes].length);
+    let randomStatement = messages[quotes][randomNum];
+    return randomStatement;
+}
+const getRandomJokes = () => {
+    let randomNum = Math.floor(Math.random() * messages[jokes].length);
+    let randomStatement = messages[jokes][randomNum];
+    return randomStatement;
+}
+const getChosenMessage = (type) => {
+    if(type === "funnyStatements"){
+        return getRandomStatement();
+    } else if(type === "fortunes"){
+        return getRandomfotunes();
+    }else if(type === "quotes"){
+        return getRandomQuotes();
+    }else if(type === "jokes"){
+        return getRandomJokes();
+    } else{
+        return "Invalid message type. Please choose from 'funnyStatements', 'fortunes', 'quotes', or 'jokes'.";
+    }
+}
+const getRandomMessage = () => {
+    let types = ["funnyStatements", "fortunes", "quotes", "jokes"];
+    let randomNum = Math.floor(Math.random() * types.length);
+    let randomType = types[randomNum];
+    return getChosenMessage(randomType);
+}
