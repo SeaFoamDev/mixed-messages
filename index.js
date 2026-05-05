@@ -82,43 +82,59 @@ let messageLog = {
     quotes: [],
     jokes: []
 };
-const getRandomStatement = () => {
+const getStatement = () => {
     let randomNum = Math.floor(Math.random() * messages[funnyStatements].length);
     let randomStatement = messages[funnyStatements][randomNum];
     return randomStatement;
 }
-const getRandomfotunes = () => {
+const getFortune = () => {
     let randomNum = Math.floor(Math.random() * messages[fortunes].length);
-    let randomStatement = messages[fortunes][randomNum];
-    return randomStatement;
+    let randomFortune = messages[fortunes][randomNum];
+    return randomFortune;
 }
-const getRandomQuotes = () => {
+const getQuote = () => {
     let randomNum = Math.floor(Math.random() * messages[quotes].length);
-    let randomStatement = messages[quotes][randomNum];
-    return randomStatement;
+    let randomQuote = messages[quotes][randomNum];
+    return randomQuote;
 }
-const getRandomJokes = () => {
+const getJoke = () => {
     let randomNum = Math.floor(Math.random() * messages[jokes].length);
-    let randomStatement = messages[jokes][randomNum];
-    return randomStatement;
+    let randomJoke = messages[jokes][randomNum];
+    return randomJoke;
 }
 const getChosenMessage = (type) => {
     if(type === "funnyStatements"){
-        messageLog[funnyStatements].push(getRandomStatement(type));
-        if(messageLog[funnyStatements].length >= messages[funnyStatements].length){
-            return getRandomStatement();
+        let statement = getStatement();
+        messageLog[funnyStatements].push(statement);
+        if(messageLog[funnyStatements].length < messages[funnyStatements].length){
+            return statement;
         }else{
-            return "You have already recieved all the funny statements, here is a random one again: " + getRandomStatement();
+            return "You have already recieved all the funny statements, here is a random one again: " + statement + " (you have recieved all the funny statements, so you are getting repeats now. Choose a different type if you want to see new messages)";
         }
     } else if(type === "fortunes"){
-        messageLog[fortunes].push(getRandomfotunes());
-        return getRandomfotunes();
+        let fortune = getFortune();
+        messageLog[fortunes].push(fortune);
+        if(messageLog[fortunes].length < messages[fortunes].length){
+            return fortune;
+        }else{
+            return "You have already recieved all the fortunes, here is a random one again: " + fortune + " (you have recieved all the fortunes, so you are getting repeats now. Choose a different type if you want to see new messages)";
+        }
     }else if(type === "quotes"){
-        messageLog[quotes].push(getRandomQuotes());
-        return getRandomQuotes();
+        let quote = getQuote();
+        messageLog[quotes].push(quote);
+        if(messageLog[quotes].length < messages[quotes].length){
+            return quote;
+        }else{
+            return "You have already recieved all the quotes, here is a random one again: " + quote + " (you have recieved all the quotes, so you are getting repeats now. Choose a different type if you want to see new messages)";
+        }
     }else if(type === "jokes"){
-        messageLog[jokes].push(getRandomJokes());
-        return getRandomJokes();
+        let joke = getJoke();
+        messageLog[jokes].push(joke);
+        if(messageLog[jokes].length < messages[jokes].length){
+            return joke;
+        }else{
+            return "You have already recieved all the jokes, here is a random one again: " + joke + " (you have recieved all the jokes, so you are getting repeats now. Choose a different type if you want to see new messages)";
+        }
     } else{
         return "Invalid message type. Please choose from 'funnyStatements', 'fortunes', 'quotes', or 'jokes'.";
     }
